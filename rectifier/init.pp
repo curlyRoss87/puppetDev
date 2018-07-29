@@ -5,5 +5,4 @@
 class rectifier {
 	file {'/home/rcleac1/test':
 	content => "This is a test file"
-	}
-}
+	}}

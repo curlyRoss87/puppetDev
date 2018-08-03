@@ -15,9 +15,22 @@ class rectifier (
 
 )
 {
- 	case $subType {
-		lowside { notify ("You are installing the lowside")
+	service {'diode.target':
+	name	=> 'diode.target',
+	ensure	=> running,
+	enable	=> true,
+	}
+
+ 	case $component	 {
+		'lowside' {
+	class rectifier::lowside::p_install.pp {
+		require 	=> version['$version'],
+		notify		=> Service['diode.target'],
+			
+		
+
 		}
+	}
      		highside { notify ("You are installing the highside")
 		}
 	}
